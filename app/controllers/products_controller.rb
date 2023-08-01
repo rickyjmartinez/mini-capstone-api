@@ -21,7 +21,14 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.new(name: "playmat", price: 10, image_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaLf3GGwi6IaROnNX83pdy_DfNeAlZS1DOOj0OyXfRDtNLW0FlKjV8xPNwRZ-5qTv7saA&usqp=CAU", description: "something you play on")
+    p params
+    @product = Product.new(
+      name: params[:input_name],
+      price: params[:input_price],
+      image_url: params[:input_image_url],
+      description: params[:input_description],
+    )
+
     @product.save
     render template: "products/show"
   end
