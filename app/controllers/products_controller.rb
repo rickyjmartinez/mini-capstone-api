@@ -19,4 +19,10 @@ class ProductsController < ApplicationController
     @product = Product.find_by(id: params["id"])
     render template: "products/show"
   end
+
+  def create
+    @product = Product.new(name: "playmat", price: 10, image_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaLf3GGwi6IaROnNX83pdy_DfNeAlZS1DOOj0OyXfRDtNLW0FlKjV8xPNwRZ-5qTv7saA&usqp=CAU", description: "something you play on")
+    @product.save
+    render template: "products/show"
+  end
 end
