@@ -33,20 +33,6 @@ class ProductsController < ApplicationController
   end
 
   def update
-    recipe = Recipe.find_by(id: params[:id])
-    @recipe.name = params[:name]
-    @recipe.ingredients = params[:ingredients]
-    @recipe.directions = params[:directions]
-    @recipe.prep_time = params[:prep_time]
-    @recipe.chef = params[:chef]
-    @recipe.image_url = params[:image_url]
-    @recipe.save
-    # combination of show and create
-    render :show
-    render json: { message: "test" }
-  end
-
-  def update
     @product = Product.find_by(id: params[:id])
     @product.update(
       name: params[:name] || @product.name,
@@ -55,5 +41,11 @@ class ProductsController < ApplicationController
       description: params[:description] || @product.description,
     )
     render :show
+  end
+
+  def destroy
+    @product = Product.find_by(id: params[:id])
+    @product.destroy
+    render json: { message: "product destroyed successfully" }
   end
 end
