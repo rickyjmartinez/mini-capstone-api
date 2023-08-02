@@ -28,8 +28,32 @@ class ProductsController < ApplicationController
       image_url: params[:input_image_url],
       description: params[:input_description],
     )
-
     @product.save
     render template: "products/show"
+  end
+
+  def update
+    recipe = Recipe.find_by(id: params[:id])
+    @recipe.name = params[:name]
+    @recipe.ingredients = params[:ingredients]
+    @recipe.directions = params[:directions]
+    @recipe.prep_time = params[:prep_time]
+    @recipe.chef = params[:chef]
+    @recipe.image_url = params[:image_url]
+    @recipe.save
+    # combination of show and create
+    render :show
+    render json: { message: "test" }
+  end
+
+  def update
+    @product = Product.find_by(id: params[:id])
+    @product.update(
+      name: params[:name] || @product.name,
+      price: params[:price] || @product.price,
+      image_url: params[:image_url] || @product.image_url,
+      description: params[:description] || @product.description,
+    )
+    render :show
   end
 end
