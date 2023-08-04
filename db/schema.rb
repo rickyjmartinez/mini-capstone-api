@@ -23,5 +23,4 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_04_163449) do
     t.datetime "updated_at", null: false
     t.integer "inventory"
   end
-
 end

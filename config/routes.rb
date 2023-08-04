@@ -10,3 +10,6 @@ Rails.application.routes.draw do
   patch "/products/:id" => "products#update"
   delete "/products/:id" => "products#destroy"
 end
+
+#Add an if / else condition to your controller create action to deal with happy / sad paths
+#Add an if / else condition to your controller update action to deal with happy / sad paths

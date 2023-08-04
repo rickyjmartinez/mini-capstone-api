@@ -1,18 +1,8 @@
 class ProductsController < ApplicationController
-  # def all
-  #   @products = Product.all
-  #   render template: "products/index"
-  # end
-
   def index
     @products = Product.all
     render template: "products/index"
   end
-
-  # def get_first_product
-  #   @product = Product.first
-  #   render template: "products/show"
-  # end
 
   def show
     p params["id"] # == 2
@@ -28,8 +18,11 @@ class ProductsController < ApplicationController
       image_url: params[:input_image_url],
       description: params[:input_description],
     )
-    @product.save
-    render template: "products/show"
+    if @product.save
+      render :show
+    else
+      render json: { error: @product.errors.full_messages }, status: 422
+    end
   end
 
   def update
@@ -40,7 +33,11 @@ class ProductsController < ApplicationController
       image_url: params[:image_url] || @product.image_url,
       description: params[:description] || @product.description,
     )
-    render :show
+    if @product.save
+      render :show
+    else
+      render json: { error: @product.errors.full_messages }, status: 422
+    end
   end
 
   def destroy
