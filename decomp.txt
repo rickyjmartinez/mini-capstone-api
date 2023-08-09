@@ -1,0 +1,20 @@
+8-9-23 
+place order backend 
+
+* Write out all the steps necessary for your mini-capstone backend to allow users to purchase products. (aim for roughly 5 to 10 steps)
+* For now, a user can submit an order for any quantity of a single product (we are not implementing a “shopping cart” where an order contains multiple products).
+* Do not write any code for this exercise; just focus on decomposing the different steps necessary to complete the feature.
+
+1. create orders controller
+2. create order post route 
+3. create action in order controller 
+4. test by signing in as user (authentication here)
+5. happy/sad paths for create action in controller 
+6. log in and create order 
+7. check postico/db to see if order saves. also check rails console. 
+
+
+other stuff needed to figure out/would be nice
+
+1. show order summary => render :show? 
+2. show order total with product info and tax
