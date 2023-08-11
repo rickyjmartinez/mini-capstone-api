@@ -18,3 +18,11 @@ other stuff needed to figure out/would be nice
 
 1. show order summary => render :show? 
 2. show order total with product info and tax
+
+8-10-23 
+
+3 levels of users
+
+not logged in - 'guest'
+logged in - 'users' 
+people who are allowed to add/remove products - 'admin' 

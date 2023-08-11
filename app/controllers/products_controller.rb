@@ -1,8 +1,7 @@
 class ProductsController < ApplicationController
+  before_action :authenticate_admin, only: [:create, :update, :destroy]
+
   def index
-    p "***********"
-    pp current_user
-    p "***********"
     @products = Product.all
     render template: "products/index"
   end
