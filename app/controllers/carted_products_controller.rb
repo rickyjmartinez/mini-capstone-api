@@ -10,4 +10,9 @@ class CartedProductsController < ApplicationController
     @carted_product.save
     render json: { message: "carted product created" }
   end
+
+  def index
+    @carted_products = CartedProduct.all
+    render
+  end
 end
