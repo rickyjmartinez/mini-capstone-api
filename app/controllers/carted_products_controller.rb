@@ -12,7 +12,20 @@ class CartedProductsController < ApplicationController
   end
 
   def index
-    @carted_products = CartedProduct.all
-    render
+    # @carted_products = CartedProduct.all
+    # render :index
+    @carted_products = []
+    if current_user
+      current_user.carted_products.each do |carted_product|
+        if carted_product.status == "carted"
+          @carted_products << carted_product
+        end
+      end
+      render :index
+      # @carted_products == current_user.carted_products && carted_product.status == "carted"
+      # render :index
+    else
+      render json: { message: "you have nothing in cart" }
+    end
   end
 end
