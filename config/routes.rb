@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   get "/orders" => "orders#index"
   get "/orders/:id" => "orders#show"
   post "/orders" => "orders#create"
+
+  post "/cart" => "carted_products#create"
 end
 
 #Add an if / else condition to your controller create action to deal with happy / sad paths
