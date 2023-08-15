@@ -8,10 +8,11 @@ class CartedProductsController < ApplicationController
       order_id: nil,
     )
     @carted_product.save
-    render json: { message: "carted product created" }
+    render :show
   end
 
   def index
+    @carted_products = CartedProduct.where(status: "carted", user_id: current_user.id)
     # @carted_products = CartedProduct.all
     # render :index
     @carted_products = []
